@@ -1,0 +1,21 @@
+Note1 :
+
+/Reference : https://academy.vertabelo.com/
+The most basic usage of ranking functions is: RANK() OVER(ORDER BY column1, column2...).
+
+The ranking functions we have learned:
+RANK() - returns the rank (a number) of each row with respect to the sorting specified within parentheses.
+DENSE_RANK() - returns a 'dense' rank, i.e. there are no gaps in numbering.
+ROW_NUMBER() - returns a unique rank number, so even rows with the same value get consecutive numbers.
+NTILE(x) - distributes the rows into a specific number of groups, provided as x.
+To get col1 of the row with rank place1 in a ranking sorted by col2, write:
+
+WITH ranking AS
+  (SELECT
+    RANK() OVER (ORDER BY col2) AS RANK,
+    col1
+  FROM table_name)
+
+SELECT col1
+FROM ranking
+WHERE RANK = place1;
