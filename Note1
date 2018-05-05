@@ -19,3 +19,14 @@ WITH ranking AS
 SELECT col1
 FROM ranking
 WHERE RANK = place1;
+
+
+
+
+You know BETWEEN already – it's used to define a range. So far, you've used it to define a range of values – this time, we're going to use it to define a range of rows instead. What are the two bounds? The bounds can be any of the five options:
+UNBOUNDED PRECEDING – the first possible row.
+PRECEDING – the n-th row before the current row (instead of n, write the number of your choice).
+CURRENT ROW – simply current row.
+FOLLOWING – the n-th row after the current row.
+UNBOUNDED FOLLOWING – the last possible row.
+The lower bound must come BEFORE the upper bound. In other words, a construction like: ...ROWS BETWEEN CURRENT ROW AND UNBOUNDED PRECEDING doesn't make sense and you'll get an error if you run it.
